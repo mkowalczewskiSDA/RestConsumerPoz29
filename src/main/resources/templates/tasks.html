@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,300,600" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    <title>Task application</title>
+</head>
+<body>
+<div class="container">
+    <h1>My Tasks</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><span th:text="description"></span></th>
+            <th><span th:text="completed"></span></th>
+            <th><span th:text="completionPercentage"></span></th>
+            <th><span th:text="userFullName"></span></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task:${tasks}">
+                <td><span th:text="${task.description}"></span></td>
+                <td><span th:text="${task.completed}"></span></td>
+                <td><span th:text="${task.completionPercentage}"></span></td>
+                <td><span th:text="${task.user.firstName}+' '+${task.user.lastName}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
