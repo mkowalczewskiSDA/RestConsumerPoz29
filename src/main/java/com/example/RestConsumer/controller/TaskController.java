@@ -16,6 +16,7 @@ public class TaskController {
     @GetMapping
     public String findAll() {
         var test = taskService.findAll();
+        System.out.println(test.get(0).getDescription());
         return null;
     }
 
