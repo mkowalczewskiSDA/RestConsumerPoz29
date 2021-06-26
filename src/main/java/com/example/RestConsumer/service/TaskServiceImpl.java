@@ -29,6 +29,12 @@ public class TaskServiceImpl implements TaskService {
         return Arrays.asList(Objects.requireNonNull(restTemplate.getForObject(resource, Task[].class)));
     }
 
+    //Dokonujemy tutaj operacji put pod adresem localhost:8080/api/tasks/{id}
+    //ciałem naszego put resta jest np
+    //{
+    //  "completed": false,
+    //  "id": 2
+    //} - to jest nasz obiekt "task"
     public Task update(Integer id, Task task) {
         return restTemplate.exchange(idResource, HttpMethod.PUT, new HttpEntity<>(task), Task.class, id).getBody();
     }

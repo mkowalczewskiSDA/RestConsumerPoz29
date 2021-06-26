@@ -22,6 +22,10 @@ public class TaskController {
         return "tasks";
     }
 
+    //tutaj przyjmujemy operacje typu post - ponieważ to jest kontroller widoku
+    //przeglądarki a przeglądarka może generować tylko requesty http typu
+    //get i post - natomiast z konsoli, lub za pomocą RestTemplate możemy także
+    //dokonywać też operacji put, delete
     @PostMapping("put")
     public String update(Task task) {
         System.out.println("test");
