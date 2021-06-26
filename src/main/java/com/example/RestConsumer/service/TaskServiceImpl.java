@@ -3,6 +3,8 @@ package com.example.RestConsumer.service;
 import com.example.RestConsumer.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,8 +21,15 @@ public class TaskServiceImpl implements TaskService {
     @Value("${resource.tasks}")
     private String resource;
 
+    @Value("${resource.tasks}/{id}")
+    private String idResource;
+
     @Override
     public List<Task> findAll() {
         return Arrays.asList(Objects.requireNonNull(restTemplate.getForObject(resource, Task[].class)));
+    }
+
+    public Task update(Integer id, Task task) {
+        return restTemplate.exchange(resource+"/"+id, HttpMethod.PUT, new HttpEntity<>(task), Task.class).getBody();
     }
 }
