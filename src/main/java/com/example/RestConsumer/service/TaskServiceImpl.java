@@ -30,6 +30,6 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task update(Integer id, Task task) {
-        return restTemplate.exchange(resource+"/"+id, HttpMethod.PUT, new HttpEntity<>(task), Task.class).getBody();
+        return restTemplate.exchange(idResource, HttpMethod.PUT, new HttpEntity<>(task), Task.class, id).getBody();
     }
 }
