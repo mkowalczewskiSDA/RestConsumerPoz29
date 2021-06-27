@@ -38,4 +38,9 @@ public class TaskServiceImpl implements TaskService {
     public Task update(Integer id, Task task) {
         return restTemplate.exchange(idResource, HttpMethod.PUT, new HttpEntity<>(task), Task.class, id).getBody();
     }
+
+    @Override
+    public void delete(Integer id) {
+        restTemplate.delete(idResource, id);
+    }
 }

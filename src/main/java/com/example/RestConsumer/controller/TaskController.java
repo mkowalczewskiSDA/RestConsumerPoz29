@@ -33,4 +33,10 @@ public class TaskController {
         return "redirect:/";
     }
 
+    @PostMapping("delete")
+    public String delete(Integer id) {
+        taskService.delete(id);
+        return "redirect:/";
+    }
+
 }
