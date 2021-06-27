@@ -27,6 +27,10 @@
                     <td><span th:text="${task.completionPercentage}"></span></td>
                     <td><span th:text="${task.user.firstName}+' '+${task.user.lastName}"></span></td>
                 </form>
+                <form th:method="post" th:action="@{/delete}">
+                    <input type="hidden" name="id" th:value="${task.id}">
+                    <button class="button u-full-witdth" type="submit">Delete</button>
+                </form>
             </tr>
         </tbody>
     </table>
