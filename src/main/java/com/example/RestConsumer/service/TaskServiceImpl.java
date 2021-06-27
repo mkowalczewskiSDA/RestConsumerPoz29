@@ -43,4 +43,9 @@ public class TaskServiceImpl implements TaskService {
     public void delete(Integer id) {
         restTemplate.delete(idResource, id);
     }
+
+    @Override
+    public Task create(Task task) {
+        return restTemplate.postForObject(resource, task, Task.class);
+    }
 }

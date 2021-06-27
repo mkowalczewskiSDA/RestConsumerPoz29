@@ -10,6 +10,8 @@ public interface TaskService {
 
     Task update(Integer id, Task task);
 
-    public void delete(Integer id);
+    void delete(Integer id);
+
+    Task create(Task task);
 
 }

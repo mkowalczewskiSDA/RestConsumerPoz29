@@ -25,7 +25,7 @@
                     <td><span th:text="${task.description}"></span></td>
                     <td><input type="checkbox" name="completed" th:checked="${task.completed}" onchange="form.submit()"></td>
                     <td><span th:text="${task.completionPercentage}"></span></td>
-                    <td><span th:text="${task.user.firstName}+' '+${task.user.lastName}"></span></td>
+                    <!--td><span th:text="${task.user.firstName}+' '+${task.user.lastName}"></span></td-->
                 </form>
                 <form th:method="post" th:action="@{/delete}">
                     <td>
@@ -36,6 +36,12 @@
             </tr>
         </tbody>
     </table>
+    <form method="post" th:action="@{/create}" th:object="${newTask}">
+        <div class="row">
+            <input type="text" placeholder="Description of the task" class="u-full-width" th:field="*{description}" />
+            <button type="submit" class="button-primary u-full-width">Add</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

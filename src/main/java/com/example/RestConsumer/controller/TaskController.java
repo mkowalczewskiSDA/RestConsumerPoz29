@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,6 +20,7 @@ public class TaskController {
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("tasks", taskService.findAll());
+        model.addAttribute("newTask", new Task());
         return "tasks";
     }
 
@@ -36,6 +38,14 @@ public class TaskController {
     @PostMapping("delete")
     public String delete(Integer id) {
         taskService.delete(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("create")
+    public String create(@ModelAttribute("newTask") Task task) {
+        System.out.println(task);
+        taskService.create(task);
+
         return "redirect:/";
     }
 
